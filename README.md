@@ -17,6 +17,20 @@ Wine Enthusiast 리뷰 약 10만 건으로 **가격·산지·품종·평가자·
 - 같은 가격이라면 미국 와인 점수가 가장 낮습니다. 오스트리아는 미국보다 +1.6점 높습니다.
 - 다른 조건이 같아도 평가자에 따라 최대 약 2.5점 차이가 납니다.
 
+## 데이터 형태
+
+`winemag-data-130k-v2.csv`의 앞 5행입니다. 리뷰 129,971건, 13개 컬럼으로 되어 있으며 긴 텍스트는 줄여서 표시했습니다.
+
+| country | description | designation | points | price | province | region_1 | region_2 | taster_name | taster_twitter_handle | title | variety | winery |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Italy | Aromas include tropical fruit, broom, br… | Vulkà Bianco | 87 |  | Sicily & Sardinia | Etna |  | Kerin O’Keefe | @kerinokeefe | Nicosia 2013 Vulkà Bianco  (Et… | White Blend | Nicosia |
+| Portugal | This is ripe and fruity, a wine that is… | Avidagos | 87 | 15 | Douro |  |  | Roger Voss | @vossroger | Quinta dos Avidagos 2011 Avida… | Portuguese Red | Quinta dos Avidagos |
+| US | Tart and snappy, the flavors of lime fle… |  | 87 | 14 | Oregon | Willamette Valley | Willamette Valley | Paul Gregutt | @paulgwine | Rainstorm 2013 Pinot Gris (Wil… | Pinot Gris | Rainstorm |
+| US | Pineapple rind, lemon pith and orange bl… | Reserve Late Harvest | 87 | 13 | Michigan | Lake Michigan Shore |  | Alexander Peartree |  | St. Julian 2013 Reserve Late H… | Riesling | St. Julian |
+| US | Much like the regular bottling from 2012… | Vintner's Reserve Wild Child Block | 87 | 65 | Oregon | Willamette Valley | Willamette Valley | Paul Gregutt | @paulgwine | Sweet Cheeks 2012 Vintner's Re… | Pinot Noir | Sweet Cheeks |
+
+분석에는 `points`(종속변수), `price`, `country`, `variety`, `taster_name`, `description`(리뷰 길이·키워드), `title`(빈티지 연도 추출)을 사용했습니다.
+
 ## 분석 방법
 
 - **데이터**: 원본 129,971건에서 중복을 제거하고 가격·빈티지 결측을 제외해 107,586건을 분석했습니다. 학습 80%, 테스트 20%로 나눴습니다.
